@@ -22,7 +22,7 @@ public class MessageService {
         for (String m : allMessage) {
             // ai를 이용한 비교 코드 작성
             Boolean pac = compareMessage(m, userMessage);
-            if(pac == true){
+            if(pac.equals(true)){
                 return true; // 스팸 메시지이면 true 반환
             }
         }
