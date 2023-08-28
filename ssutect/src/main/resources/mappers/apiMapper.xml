@@ -5,4 +5,9 @@
 <!-- Mapper를 사용하는 Repository의 전체 경로를 적어줘야함. -->
 <mapper namespace="com/ssu/ssutect/message/repository/MessageRepository.java">
 
+    <select id="getAllMessage" resultType="String">
+        SELECT m.content FROM message as m
+    </select>
+
+
 </mapper>
