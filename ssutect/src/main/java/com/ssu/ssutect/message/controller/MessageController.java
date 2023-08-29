@@ -21,4 +21,10 @@ public class MessageController {
         return ResponseEntity.ok(pac);
     }
 
+    @PostMapping("/report")
+    public ResponseEntity processMessageReport(@RequestBody Map<String,String> userMessage){
+        Boolean pac = messageService.processMessageReport(userMessage.get("userMessage"));
+        return ResponseEntity.ok(pac);
+    }
+
 }
