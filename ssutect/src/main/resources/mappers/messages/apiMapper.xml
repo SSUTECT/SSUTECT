@@ -9,5 +9,12 @@
         SELECT m.content FROM message as m
     </select>
 
+    <select id="findByContent" resultType="Message">
+        SELECT * FROM message WHERE content = #{content}
+    </select>
+
+    <insert id="saveMessage" parameterType="com.ssu.ssutect.message.Message">
+        INSERT INTO message VALUES(#{content},#{count},#{report})
+    </insert>
 
 </mapper>
