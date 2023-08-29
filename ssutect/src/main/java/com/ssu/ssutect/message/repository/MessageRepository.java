@@ -1,5 +1,6 @@
 package com.ssu.ssutect.message.repository;
 
+import com.ssu.ssutect.message.Message;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +11,8 @@ import java.util.List;
 public interface MessageRepository {
 
     List<String> getAllMessage();
+
+    Message findByContent(String content);
+    int saveMessage(Message message);
 
 }
