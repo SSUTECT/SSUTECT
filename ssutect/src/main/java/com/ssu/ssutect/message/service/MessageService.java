@@ -1,6 +1,7 @@
 package com.ssu.ssutect.message.service;
 
 import com.ssu.ssutect.message.Message;
+import com.ssu.ssutect.message.vo.MessageVO;
 import com.ssu.ssutect.message.repository.MessageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -42,13 +43,13 @@ public class MessageService {
         int result;
         if(message != null){    // 이미 같은 내용을 갖는 문자가 DB에 존재하면
             message.setCount(message.getCount() + 1);   // 신고 횟수를 증가시킴
-            result = messageRepository.saveMessage(message);
+            result = messageRepository.updateMessage(message);
         }
         else {
-            Message reportMessage = new Message();
+            MessageVO reportMessage = new MessageVO();
             reportMessage.setContent(content);
-            reportMessage.setCount(1L);
-            reportMessage.setReport(1L);     // report 1 : 제보된 메세지 / report 0 : 기존 저장된 메세지
+            reportMessage.setCount(1);
+            reportMessage.setReport(1);     // report 1 : 제보된 메세지 / report 0 : 기존 저장된 메세지
             result = messageRepository.saveMessage(reportMessage);
         }
         if(result == 1) {return true;}
