@@ -2,9 +2,11 @@ package com.ssu.ssutect.message.service;
 
 import com.ssu.ssutect.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ssu.ssutect.message.repository.MessageRepository;
 
+@Service
 public class MessageService {
     @Autowired
     private MessageRepository messageRepository;
