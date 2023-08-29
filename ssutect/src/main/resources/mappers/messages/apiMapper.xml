@@ -9,7 +9,7 @@
         SELECT m.content FROM message as m
     </select>
 
-    <select id="findByContent" resultType="Message">
+    <select id="findByContent" resultType="com.ssu.ssutect.message.Message">
         SELECT * FROM message WHERE content = #{content}
     </select>
 
