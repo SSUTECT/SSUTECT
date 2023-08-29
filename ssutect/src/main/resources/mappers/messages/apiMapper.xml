@@ -13,8 +13,12 @@
         SELECT * FROM message WHERE content = #{content}
     </select>
 
-    <insert id="saveMessage" parameterType="com.ssu.ssutect.message.Message">
-        INSERT INTO message VALUES(#{content},#{count},#{report})
+    <update id="updateMessage">
+        UPDATE message set content=#{content}, count=#{count}, report=#{report} WHERE id=#{id}
+    </update>
+
+    <insert id="saveMessage" parameterType="com.ssu.ssutect.message.vo.MessageVO" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO message VALUES(,#{content},#{count},#{report})
     </insert>
 
 </mapper>
