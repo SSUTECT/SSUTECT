@@ -39,16 +39,19 @@ public class MessageService {
 
     public Boolean processMessageReport(String content){
         Message message = messageRepository.findByContent(content);
+        int result;
         if(message != null){    // 이미 같은 내용을 갖는 문자가 DB에 존재하면
             message.setCount(message.getCount() + 1);   // 신고 횟수를 증가시킴
-            messageRepository.save(message);
+            result = messageRepository.saveMessage(message);
         }
         else {
             Message reportMessage = new Message();
             reportMessage.setContent(content);
             reportMessage.setCount(1L);
             reportMessage.setReport(1L);     // report 1 : 제보된 메세지 / report 0 : 기존 저장된 메세지
-            messageRepository.save(reportMessage);
+            result = messageRepository.saveMessage(reportMessage);
         }
+        if(result == 1) {return true;}
+        return false;
     }
 }
